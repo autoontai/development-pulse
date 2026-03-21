@@ -323,7 +323,7 @@ export default function WoodbineProfile() {
       <div className="flex flex-1 overflow-hidden">
         <nav className="w-48 bg-white border-r border-gray-200 flex-shrink-0 pt-6 sticky overflow-y-auto" style={{top:64,height:"calc(100vh - 64px)"}}>
         <p className="text-xs tracking-[0.2em] uppercase text-gray-400 px-5 mb-4">Sections</p>
-        {sectionNavs.map(n=>(
+        {navs.map(n=>(
           <button key={n.id} onClick={()=>setTab(n.id)} className={"block w-full text-left px-5 py-2.5 text-sm font-medium border-l-2 cursor-pointer "+(tab===n.id?"bg-gray-50 border-gray-900 text-gray-900":"border-transparent text-gray-500 hover:text-gray-700")} style={{fontFamily:SANS}}>{n.label}</button>
         ))}
         <div className="mt-3 mb-2 px-5"><div className="border-t border-gray-200"/></div>
