@@ -1,6 +1,5 @@
 import "./globals.css";
 import Header from "../components/Header";
-import ScorecardCapture from "../components/ScorecardCapture";
 
 export const metadata = {
   title: "Real Data IQ | Neighbourhood Intelligence for Toronto",
@@ -17,7 +16,6 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body style={{ margin: 0, padding: 0 }}>
-        <ScorecardCapture variant="header" />
         <Header />
         <div style={{ paddingTop: 64 }}>
           {children}

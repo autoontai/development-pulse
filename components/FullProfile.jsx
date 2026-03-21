@@ -111,6 +111,8 @@ export default function FullProfile({d}){
         <p style={{fontSize:11,letterSpacing:"0.2em",textTransform:"uppercase",color:"#999",padding:"0 20px",marginBottom:12}}>Tools</p>
         <a href="/find-neighbourhood" style={{display:"block",padding:"10px 20px",fontSize:13,fontWeight:500,fontFamily:SN,color:"#888",textDecoration:"none",borderLeft:"2px solid transparent"}}>Find Neighbourhood</a>
         <a href="/compare" style={{display:"block",padding:"10px 20px",fontSize:13,fontWeight:500,fontFamily:SN,color:"#888",textDecoration:"none",borderLeft:"2px solid transparent"}}>Compare Hoods</a>
+        <a href="/blog" style={{display:"block",padding:"10px 20px",fontSize:13,fontWeight:500,fontFamily:SN,color:"#888",textDecoration:"none",borderLeft:"2px solid transparent"}}>Blog</a>
+        <a href="/premium" style={{display:"block",padding:"10px 20px",fontSize:13,fontWeight:500,fontFamily:SN,color:"#888",textDecoration:"none",borderLeft:"2px solid transparent"}}>Premium Newsletter</a>
         {tools.map(n=>(
           <button key={n.id} onClick={()=>setTab(n.id)} style={{display:"block",width:"100%",textAlign:"left",padding:"10px 20px",border:"none",cursor:"pointer",fontSize:13,fontWeight:500,fontFamily:SN,background:tab===n.id?"#f9f9f9":"transparent",borderLeft:tab===n.id?"2px solid "+INK:"2px solid transparent",color:tab===n.id?INK:"#888"}}>{n.l}</button>
         ))}

@@ -67,11 +67,11 @@ export default function Home() {
       </div>
 
       {/* BLOG CTA */}
-      <div style={{ maxWidth: 800, margin: "0 auto", padding: "0 32px 16px" }}>
+      <div style={{ maxWidth: 800, margin: "0 auto", padding: "0 32px 12px" }}>
         <button
           onClick={() => router.push("/blog")}
           style={{
-            width: "100%", padding: "20px 32px", background: "#fff", border: "1px solid #e0e0e0",
+            width: "100%", padding: "24px 32px", background: "#fff", border: "1px solid #e0e0e0",
             cursor: "pointer", textAlign: "left", display: "flex", justifyContent: "space-between", alignItems: "center",
             transition: "border-color 0.2s",
           }}

@@ -333,6 +333,8 @@ export default function WoodbineProfile() {
           <p className="text-xs tracking-[0.2em] uppercase text-gray-400 px-5 mb-3">Tools</p>
           <a href="/find-neighbourhood" className="block w-full text-left px-5 py-2.5 text-sm font-medium text-gray-500 hover:text-gray-700 border-l-2 border-transparent no-underline" style={{fontFamily:SANS}}>Find Neighbourhood</a>
           <a href="/compare" className="block w-full text-left px-5 py-2.5 text-sm font-medium text-gray-500 hover:text-gray-700 border-l-2 border-transparent no-underline" style={{fontFamily:SANS}}>Compare Hoods</a>
+          <a href="/blog" className="block w-full text-left px-5 py-2.5 text-sm font-medium text-gray-500 hover:text-gray-700 border-l-2 border-transparent no-underline" style={{fontFamily:SANS}}>Blog</a>
+          <a href="/premium" className="block w-full text-left px-5 py-2.5 text-sm font-medium text-gray-500 hover:text-gray-700 border-l-2 border-transparent no-underline" style={{fontFamily:SANS}}>Premium Newsletter</a>
           {toolNavs.map(n=>(
             <button key={n.id} onClick={()=>setTab(n.id)}
               className={`w-full text-left px-5 py-2.5 text-sm font-medium transition-colors ${tab===n.id?"text-gray-900 bg-gray-50 border-l-2 border-gray-900":"text-gray-500 hover:text-gray-700 border-l-2 border-transparent"}`}>

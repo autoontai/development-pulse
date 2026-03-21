@@ -108,7 +108,25 @@ export default function Header() {
           </div>
         )}
       </div>
-      <p style={{ fontFamily: SN, fontSize: 11, color: "#bbb", margin: 0, flexShrink: 0, letterSpacing: "0.1em" }}>TORONTO &middot; 158 NEIGHBOURHOODS</p>
+      <div style={{ display: "flex", alignItems: "center", gap: 8, flexShrink: 0 }}>
+        <input type="email" id="hdr-sc-email" placeholder="Free Scorecard — enter email"
+          style={{ padding: "6px 10px", fontSize: 11, fontFamily: SN, border: "1px solid #e0e0e0", background: "#faf9f6", color: "#1a1a1a", width: 200, boxSizing: "border-box" }}
+          onKeyDown={e => { if (e.key === "Enter") { document.getElementById("hdr-sc-btn").click(); } }} />
+        <button id="hdr-sc-btn"
+          onClick={async () => {
+            const inp = document.getElementById("hdr-sc-email");
+            const btn = document.getElementById("hdr-sc-btn");
+            const em = inp.value;
+            if (!em || !em.includes("@")) return;
+            btn.textContent = "...";
+            try {
+              const r = await fetch("/api/subscribe", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ email: em, neighbourhood: "Scorecard" }) });
+              if (r.ok) { btn.textContent = "Sent!"; inp.value = ""; setTimeout(() => { btn.textContent = "Send"; }, 3000); }
+              else { btn.textContent = "Error"; setTimeout(() => { btn.textContent = "Send"; }, 2000); }
+            } catch { btn.textContent = "Error"; setTimeout(() => { btn.textContent = "Send"; }, 2000); }
+          }}
+          style={{ padding: "6px 12px", fontSize: 11, fontFamily: SN, fontWeight: 600, background: "#1a1a1a", color: "#fff", border: "none", cursor: "pointer", letterSpacing: "0.03em", flexShrink: 0 }}>Send</button>
+      </div>
     </header>
   );
 }

@@ -6,7 +6,7 @@ const blogPosts = [
     author: "Real Data IQ",
     readTime: "8 min",
     category: "Safety",
-    image: "https://images.unsplash.com/photo-1517090504332-edb0cc4fdb2d?w=1200&q=80",
+    image: "/blog-hidden-gems.svg",
     imageAlt: "Toronto residential street with mature trees",
     excerpt: "We ranked all 158 Toronto neighbourhoods by total crime incidents, traffic fatalities, and shooting data. Here are the 15 safest places to live in 2026 — with the numbers to prove it.",
     hoods: [
@@ -34,7 +34,7 @@ const blogPosts = [
     author: "Real Data IQ",
     readTime: "7 min",
     category: "Families",
-    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&q=80",
+    image: "/blog-families.svg",
     imageAlt: "Toronto family neighbourhood with houses and trees",
     excerpt: "We scored every Toronto neighbourhood on schools, daycares, playgrounds, safety, and walkability — then filtered for homes under $1.2M. These 12 neighbourhoods deliver the best family value.",
     hoods: [
@@ -59,7 +59,7 @@ const blogPosts = [
     author: "Real Data IQ",
     readTime: "6 min",
     category: "Investment",
-    image: "https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=1200&q=80",
+    image: "/blog-hidden-gems.svg",
     imageAlt: "Toronto skyline at sunset with residential areas",
     excerpt: "We identified neighbourhoods with above-average momentum scores, below-average home prices, and strong amenity growth. These 10 areas are where the smart money is moving before everyone else catches on.",
     hoods: [
