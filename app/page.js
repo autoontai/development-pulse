@@ -28,76 +28,28 @@ export default function Home() {
         <p style={{ fontFamily: SF, fontSize: 20, color: "#666", lineHeight: 1.6, maxWidth: 600 }}>Crime stats, school ratings, development pipeline, transit scores, property tax estimates, and 20+ data layers for every Toronto neighbourhood — compared to citywide averages.</p>
       </div>
 
-      {/* FIND YOUR NEIGHBOURHOOD CTA */}
-      <div style={{ maxWidth: 800, margin: "0 auto", padding: "0 32px 48px" }}>
-        <button
-          onClick={() => router.push("/find-neighbourhood")}
-          style={{
-            width: "100%", padding: "24px 32px", background: "#fff",
-            border: "1px solid #e0e0e0", cursor: "pointer", textAlign: "left",
-            display: "flex", justifyContent: "space-between", alignItems: "center",
-            transition: "border-color 0.2s",
-          }}
-          onMouseEnter={e => e.currentTarget.style.borderColor = "#1a1a1a"}
-          onMouseLeave={e => e.currentTarget.style.borderColor = "#e0e0e0"}
-        >
-          <div>
-            <p style={{ fontFamily: SF, fontSize: 20, fontWeight: 400, color: "#1a1a1a", margin: "0 0 4px" }}>Find Your Neighbourhood</p>
-            <p style={{ fontSize: 13, color: "#999", margin: 0 }}>Enter any Toronto address to see which neighbourhood it falls in, with a live map.</p>
-          </div>
-          <span style={{ fontSize: 24, color: "#999", flexShrink: 0, marginLeft: 16 }}>&rarr;</span>
-        </button>
-        <button
-          onClick={() => router.push("/compare")}
-          style={{
-            width: "100%", padding: "24px 32px", background: "#fff", marginTop: 12,
-            border: "1px solid #e0e0e0", cursor: "pointer", textAlign: "left",
-            display: "flex", justifyContent: "space-between", alignItems: "center",
-            transition: "border-color 0.2s",
-          }}
-          onMouseEnter={e => e.currentTarget.style.borderColor = "#1a1a1a"}
-          onMouseLeave={e => e.currentTarget.style.borderColor = "#e0e0e0"}
-        >
-          <div>
-            <p style={{ fontFamily: SF, fontSize: 20, fontWeight: 400, color: "#1a1a1a", margin: "0 0 4px" }}>Compare Neighbourhoods</p>
-            <p style={{ fontSize: 13, color: "#999", margin: 0 }}>Side-by-side comparison of every metric across 2–3 neighbourhoods.</p>
-          </div>
-          <span style={{ fontSize: 24, color: "#999", flexShrink: 0, marginLeft: 16 }}>&rarr;</span>
-        </button>
-      </div>
-
-      {/* ALL TOOLS & LINKS */}
-      <div style={{ maxWidth: 800, margin: "0 auto", padding: "0 32px 12px", display: "flex", flexDirection: "column", gap: 8 }}>
-        <button onClick={() => router.push("/tools/tree-canopy")}
-          style={{ width: "100%", padding: "20px 24px", background: "#fff", border: "1px solid #e0e0e0", cursor: "pointer", textAlign: "left", display: "flex", justifyContent: "space-between", alignItems: "center", transition: "border-color 0.2s" }}
-          onMouseEnter={e => e.currentTarget.style.borderColor = "#1a1a1a"} onMouseLeave={e => e.currentTarget.style.borderColor = "#e0e0e0"}>
-          <div><p style={{ fontFamily: SF, fontSize: 18, fontWeight: 400, color: "#1a1a1a", margin: "0 0 3px" }}>Tree Canopy Coverage Map</p><p style={{ fontSize: 12, color: "#999", margin: 0 }}>Explore the greenest neighbourhoods in Toronto.</p></div>
-          <span style={{ fontSize: 20, color: "#999", flexShrink: 0, marginLeft: 12 }}>&rarr;</span>
-        </button>
-        <button onClick={() => router.push("/tools/childcare")}
-          style={{ width: "100%", padding: "20px 24px", background: "#fff", border: "1px solid #e0e0e0", cursor: "pointer", textAlign: "left", display: "flex", justifyContent: "space-between", alignItems: "center", transition: "border-color 0.2s" }}
-          onMouseEnter={e => e.currentTarget.style.borderColor = "#1a1a1a"} onMouseLeave={e => e.currentTarget.style.borderColor = "#e0e0e0"}>
-          <div><p style={{ fontFamily: SF, fontSize: 18, fontWeight: 400, color: "#1a1a1a", margin: "0 0 3px" }}>Childcare Readiness Map</p><p style={{ fontSize: 12, color: "#999", margin: 0 }}>Find neighbourhoods with the most daycare spots and shortest waits.</p></div>
-          <span style={{ fontSize: 20, color: "#999", flexShrink: 0, marginLeft: 12 }}>&rarr;</span>
-        </button>
-        <button onClick={() => router.push("/tools/pedestrian-safety")}
-          style={{ width: "100%", padding: "20px 24px", background: "#fff", border: "1px solid #e0e0e0", cursor: "pointer", textAlign: "left", display: "flex", justifyContent: "space-between", alignItems: "center", transition: "border-color 0.2s" }}
-          onMouseEnter={e => e.currentTarget.style.borderColor = "#1a1a1a"} onMouseLeave={e => e.currentTarget.style.borderColor = "#e0e0e0"}>
-          <div><p style={{ fontFamily: SF, fontSize: 18, fontWeight: 400, color: "#1a1a1a", margin: "0 0 3px" }}>Pedestrian & Cyclist Safety Map</p><p style={{ fontSize: 12, color: "#999", margin: 0 }}>See which areas have the lowest traffic collision rates.</p></div>
-          <span style={{ fontSize: 20, color: "#999", flexShrink: 0, marginLeft: 12 }}>&rarr;</span>
-        </button>
-        <button onClick={() => router.push("/blog")}
-          style={{ width: "100%", padding: "20px 24px", background: "#fff", border: "1px solid #e0e0e0", cursor: "pointer", textAlign: "left", display: "flex", justifyContent: "space-between", alignItems: "center", transition: "border-color 0.2s" }}
-          onMouseEnter={e => e.currentTarget.style.borderColor = "#1a1a1a"} onMouseLeave={e => e.currentTarget.style.borderColor = "#e0e0e0"}>
-          <div><p style={{ fontFamily: SF, fontSize: 18, fontWeight: 400, color: "#1a1a1a", margin: "0 0 3px" }}>Neighbourhood Intelligence Blog</p><p style={{ fontSize: 12, color: "#999", margin: 0 }}>Data-driven rankings, hidden gems, and investment signals.</p></div>
-          <span style={{ fontSize: 20, color: "#999", flexShrink: 0, marginLeft: 12 }}>&rarr;</span>
-        </button>
-        <button onClick={() => router.push("/premium")}
-          style={{ width: "100%", padding: "20px 24px", background: "#fff", border: "1px solid #e0e0e0", cursor: "pointer", textAlign: "left", display: "flex", justifyContent: "space-between", alignItems: "center", transition: "border-color 0.2s" }}
-          onMouseEnter={e => e.currentTarget.style.borderColor = "#1a1a1a"} onMouseLeave={e => e.currentTarget.style.borderColor = "#e0e0e0"}>
-          <div><p style={{ fontFamily: SF, fontSize: 18, fontWeight: 400, color: "#1a1a1a", margin: "0 0 3px" }}>Premium Newsletter</p><p style={{ fontSize: 12, color: "#999", margin: 0 }}>Monthly deep-dive reports, early data access, and exclusive insights. $10/mo.</p></div>
-          <span style={{ fontSize: 20, color: "#999", flexShrink: 0, marginLeft: 12 }}>&rarr;</span>
-        </button>
+      {/* ALL LINKS */}
+      <div style={{ maxWidth: 800, margin: "0 auto", padding: "0 32px 48px", display: "flex", flexDirection: "column", gap: 10 }}>
+        {[
+          { path: "/find-neighbourhood", title: "Find Your Neighbourhood", desc: "Enter any Toronto address to see which neighbourhood it falls in, with a live map." },
+          { path: "/compare", title: "Compare Neighbourhoods", desc: "Side-by-side comparison of every metric across 2–3 neighbourhoods." },
+          { path: "/tools/tree-canopy", title: "Tree Canopy Coverage Map", desc: "Explore the greenest neighbourhoods in Toronto." },
+          { path: "/tools/childcare", title: "Childcare Readiness Map", desc: "Find neighbourhoods with the most daycare spots and shortest waits." },
+          { path: "/tools/pedestrian-safety", title: "Pedestrian & Cyclist Safety Map", desc: "See which areas have the lowest traffic collision rates." },
+          { path: "/blog", title: "Neighbourhood Intelligence Blog", desc: "Data-driven rankings, hidden gems, and investment signals." },
+          { path: "/premium", title: "Premium Newsletter", desc: "Monthly deep-dive reports, early data access, and exclusive insights. $10/mo." },
+        ].map(item => (
+          <button key={item.path} onClick={() => router.push(item.path)}
+            style={{ width: "100%", padding: "20px 28px", background: "#fff", border: "1px solid #e0e0e0", cursor: "pointer", textAlign: "left", display: "flex", justifyContent: "space-between", alignItems: "center", transition: "border-color 0.2s" }}
+            onMouseEnter={e => e.currentTarget.style.borderColor = "#1a1a1a"}
+            onMouseLeave={e => e.currentTarget.style.borderColor = "#e0e0e0"}>
+            <div>
+              <p style={{ fontFamily: SF, fontSize: 18, fontWeight: 400, color: "#1a1a1a", margin: "0 0 4px" }}>{item.title}</p>
+              <p style={{ fontSize: 13, color: "#999", margin: 0 }}>{item.desc}</p>
+            </div>
+            <span style={{ fontSize: 22, color: "#999", flexShrink: 0, marginLeft: 16 }}>&rarr;</span>
+          </button>
+        ))}
       </div>
 
       {/* FEATURED */}
