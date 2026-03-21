@@ -28,28 +28,85 @@ export default function Home() {
         <p style={{ fontFamily: SF, fontSize: 20, color: "#666", lineHeight: 1.6, maxWidth: 600 }}>Crime stats, school ratings, development pipeline, transit scores, property tax estimates, and 20+ data layers for every Toronto neighbourhood — compared to citywide averages.</p>
       </div>
 
-      {/* ALL LINKS */}
-      <div style={{ maxWidth: 800, margin: "0 auto", padding: "0 32px 48px", display: "flex", flexDirection: "column", gap: 10 }}>
-        {[
-          { path: "/find-neighbourhood", title: "Find Your Neighbourhood", desc: "Enter any Toronto address to see which neighbourhood it falls in, with a live map." },
-          { path: "/compare", title: "Compare Neighbourhoods", desc: "Side-by-side comparison of every metric across 2–3 neighbourhoods." },
-          { path: "/tools/tree-canopy", title: "Tree Canopy Coverage Map", desc: "Explore the greenest neighbourhoods in Toronto." },
-          { path: "/tools/childcare", title: "Childcare Readiness Map", desc: "Find neighbourhoods with the most daycare spots and shortest waits." },
-          { path: "/tools/pedestrian-safety", title: "Pedestrian & Cyclist Safety Map", desc: "See which areas have the lowest traffic collision rates." },
-          { path: "/blog", title: "Neighbourhood Intelligence Blog", desc: "Data-driven rankings, hidden gems, and investment signals." },
-          { path: "/premium", title: "Premium Newsletter", desc: "Monthly deep-dive reports, early data access, and exclusive insights. $10/mo." },
-        ].map(item => (
-          <button key={item.path} onClick={() => router.push(item.path)}
-            style={{ width: "100%", padding: "20px 28px", background: "#fff", border: "1px solid #e0e0e0", cursor: "pointer", textAlign: "left", display: "flex", justifyContent: "space-between", alignItems: "center", transition: "border-color 0.2s" }}
-            onMouseEnter={e => e.currentTarget.style.borderColor = "#1a1a1a"}
-            onMouseLeave={e => e.currentTarget.style.borderColor = "#e0e0e0"}>
-            <div>
-              <p style={{ fontFamily: SF, fontSize: 18, fontWeight: 400, color: "#1a1a1a", margin: "0 0 4px" }}>{item.title}</p>
-              <p style={{ fontSize: 13, color: "#999", margin: 0 }}>{item.desc}</p>
-            </div>
-            <span style={{ fontSize: 22, color: "#999", flexShrink: 0, marginLeft: 16 }}>&rarr;</span>
-          </button>
-        ))}
+      {/* ALL LINKS - matches sidebar */}
+      <div style={{ maxWidth: 800, margin: "0 auto", padding: "0 32px 48px" }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+          {[
+            { path: "/find-neighbourhood", title: "Find Your Neighbourhood", desc: "Enter any Toronto address to see which neighbourhood it falls in." },
+            { path: "/compare", title: "Compare Neighbourhoods", desc: "Side-by-side comparison of every metric across 2–3 neighbourhoods." },
+          ].map(item => (
+            <button key={item.path} onClick={() => router.push(item.path)}
+              style={{ width: "100%", padding: "20px 28px", background: "#fff", border: "1px solid #e0e0e0", cursor: "pointer", textAlign: "left", display: "flex", justifyContent: "space-between", alignItems: "center", transition: "border-color 0.2s" }}
+              onMouseEnter={e => e.currentTarget.style.borderColor = "#1a1a1a"} onMouseLeave={e => e.currentTarget.style.borderColor = "#e0e0e0"}>
+              <div><p style={{ fontFamily: SF, fontSize: 18, fontWeight: 400, color: "#1a1a1a", margin: "0 0 4px" }}>{item.title}</p><p style={{ fontSize: 13, color: "#999", margin: 0 }}>{item.desc}</p></div>
+              <span style={{ fontSize: 22, color: "#999", flexShrink: 0, marginLeft: 16 }}>&rarr;</span>
+            </button>
+          ))}
+        </div>
+
+        <div style={{ borderTop: "1px solid #e0e0e0", margin: "20px 0" }} />
+        <p style={{ fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", color: "#999", marginBottom: 12 }}>Sections</p>
+        <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+          {[
+            { path: "/toronto/woodbine-corridor#development", title: "Development", desc: "Pipeline units, building permits, home values, and affordable housing." },
+            { path: "/toronto/woodbine-corridor#family", title: "Family & Living", desc: "Schools, daycares, groceries, recreation, walkability, and transit." },
+            { path: "/toronto/woodbine-corridor#safety", title: "Safety", desc: "Crime incidents, traffic KSI, shootings, hate crimes, and risk layers." },
+            { path: "/toronto/woodbine-corridor#health", title: "Health", desc: "Premature mortality, diabetes, family doctor access, food insecurity." },
+            { path: "/toronto/woodbine-corridor#demographics", title: "Demographics", desc: "Population, income, ownership, education, immigration, diversity." },
+            { path: "/toronto/woodbine-corridor#environment", title: "Nature", desc: "Parks, green space, tree canopy, green roofs, flood risk." },
+            { path: "/toronto/woodbine-corridor#business", title: "Business", desc: "Active businesses, net growth, restaurants, cafés, BIA status." },
+          ].map(item => (
+            <button key={item.path} onClick={() => router.push(item.path)}
+              style={{ width: "100%", padding: "20px 28px", background: "#fff", border: "1px solid #e0e0e0", cursor: "pointer", textAlign: "left", display: "flex", justifyContent: "space-between", alignItems: "center", transition: "border-color 0.2s" }}
+              onMouseEnter={e => e.currentTarget.style.borderColor = "#1a1a1a"} onMouseLeave={e => e.currentTarget.style.borderColor = "#e0e0e0"}>
+              <div><p style={{ fontFamily: SF, fontSize: 18, fontWeight: 400, color: "#1a1a1a", margin: "0 0 4px" }}>{item.title}</p><p style={{ fontSize: 13, color: "#999", margin: 0 }}>{item.desc}</p></div>
+              <span style={{ fontSize: 22, color: "#999", flexShrink: 0, marginLeft: 16 }}>&rarr;</span>
+            </button>
+          ))}
+        </div>
+
+        <div style={{ borderTop: "1px solid #e0e0e0", margin: "20px 0" }} />
+        <p style={{ fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", color: "#999", marginBottom: 12 }}>Blog</p>
+        <button onClick={() => router.push("/blog")}
+          style={{ width: "100%", padding: "20px 28px", background: "#fff", border: "1px solid #e0e0e0", cursor: "pointer", textAlign: "left", display: "flex", justifyContent: "space-between", alignItems: "center", transition: "border-color 0.2s" }}
+          onMouseEnter={e => e.currentTarget.style.borderColor = "#1a1a1a"} onMouseLeave={e => e.currentTarget.style.borderColor = "#e0e0e0"}>
+          <div><p style={{ fontFamily: SF, fontSize: 18, fontWeight: 400, color: "#1a1a1a", margin: "0 0 4px" }}>Neighbourhood Intelligence Blog</p><p style={{ fontSize: 13, color: "#999", margin: 0 }}>Data-driven rankings, hidden gems, and investment signals.</p></div>
+          <span style={{ fontSize: 22, color: "#999", flexShrink: 0, marginLeft: 16 }}>&rarr;</span>
+        </button>
+
+        <div style={{ borderTop: "1px solid #e0e0e0", margin: "20px 0" }} />
+        <p style={{ fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", color: "#999", marginBottom: 12 }}>Tools</p>
+        <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+          {[
+            { path: "/tools/tree-canopy", title: "Tree Canopy Coverage Map", desc: "Explore the greenest neighbourhoods in Toronto." },
+            { path: "/tools/childcare", title: "Childcare Readiness Map", desc: "Find neighbourhoods with the most daycare spots and shortest waits." },
+            { path: "/tools/pedestrian-safety", title: "Pedestrian & Cyclist Safety Map", desc: "See which areas have the lowest traffic collision rates." },
+          ].map(item => (
+            <button key={item.path} onClick={() => router.push(item.path)}
+              style={{ width: "100%", padding: "20px 28px", background: "#fff", border: "1px solid #e0e0e0", cursor: "pointer", textAlign: "left", display: "flex", justifyContent: "space-between", alignItems: "center", transition: "border-color 0.2s" }}
+              onMouseEnter={e => e.currentTarget.style.borderColor = "#1a1a1a"} onMouseLeave={e => e.currentTarget.style.borderColor = "#e0e0e0"}>
+              <div><p style={{ fontFamily: SF, fontSize: 18, fontWeight: 400, color: "#1a1a1a", margin: "0 0 4px" }}>{item.title}</p><p style={{ fontSize: 13, color: "#999", margin: 0 }}>{item.desc}</p></div>
+              <span style={{ fontSize: 22, color: "#999", flexShrink: 0, marginLeft: 16 }}>&rarr;</span>
+            </button>
+          ))}
+        </div>
+
+        <div style={{ borderTop: "1px solid #e0e0e0", margin: "20px 0" }} />
+        <p style={{ fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", color: "#999", marginBottom: 12 }}>Calculators</p>
+        <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+          {[
+            { path: "/toronto/woodbine-corridor", title: "Homebuyer Calculator", desc: "Mortgage, property tax, closing costs, and affordability for any neighbourhood." },
+            { path: "/toronto/woodbine-corridor", title: "What Can I Afford?", desc: "Enter your income to see which neighbourhoods are within reach." },
+            { path: "/toronto/woodbine-corridor", title: "Rent vs Buy", desc: "Compare cumulative costs of renting vs buying over time." },
+          ].map((item, i) => (
+            <button key={i} onClick={() => router.push(item.path)}
+              style={{ width: "100%", padding: "20px 28px", background: "#fff", border: "1px solid #e0e0e0", cursor: "pointer", textAlign: "left", display: "flex", justifyContent: "space-between", alignItems: "center", transition: "border-color 0.2s" }}
+              onMouseEnter={e => e.currentTarget.style.borderColor = "#1a1a1a"} onMouseLeave={e => e.currentTarget.style.borderColor = "#e0e0e0"}>
+              <div><p style={{ fontFamily: SF, fontSize: 18, fontWeight: 400, color: "#1a1a1a", margin: "0 0 4px" }}>{item.title}</p><p style={{ fontSize: 13, color: "#999", margin: 0 }}>{item.desc}</p></div>
+              <span style={{ fontSize: 22, color: "#999", flexShrink: 0, marginLeft: 16 }}>&rarr;</span>
+            </button>
+          ))}
+        </div>
       </div>
 
       {/* FEATURED */}
