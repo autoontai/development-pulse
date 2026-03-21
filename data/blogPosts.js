@@ -75,5 +75,125 @@ const blogPosts = [
       {rank:10,name:"Cabbagetown-South St.James Town",slug:"cabbagetown-south-st-james-town",mom:111,hv:820,ws:84,crime:177,bg:22,insight:"The highest business growth on this list at +22, tied with Highland Creek. Victorian architecture, Riverdale Farm, and walk score 84. At $820K it's the cheapest address in old Toronto's core. The gap with adjacent Corktown ($1.1M+) is striking."},
     ],
   },
+,
+  {
+    slug: "greenest-neighbourhoods-toronto-tree-canopy-2026",
+    title: "The 10 Greenest Neighbourhoods in Toronto: Where the Tree Canopy Thrives",
+    date: "2026-03-20",
+    excerpt: "We ranked all 158 neighbourhoods by tree canopy coverage, green space percentage, and parks density. These 10 are Toronto's urban oases.",
+    image: "/blog-tree-canopy.svg",
+    imageAlt: "Toronto tree canopy map",
+    readTime: "6 min read",
+    body: `
+Toronto's official tree canopy target is 40% by 2050. The current citywide average is 28%. But the variation between neighbourhoods is enormous — from under 16% in some downtown cores to over 38% in the ravine-adjacent areas. We ranked all 158 neighbourhoods on a green composite: tree canopy coverage (50% weight), green space percentage (30%), and parks count (20%).
+
+## The 10 Greenest
+
+**1. Bridle Path–Sunnybrook–York Mills** — Tree canopy 38%, green space 24%, 8 parks. Toronto's wealthiest neighbourhood is also its greenest. Large lots with mature oaks and maples, plus Sunnybrook Park (154 hectares) within its boundaries. The canopy here is approaching the 40% city target two decades early.
+
+**2. Rosedale–Moore Park** — Canopy 36%, green space 22%, 7 parks. The Don Valley ravine system runs through this neighbourhood, providing a protected corridor of mature forest. The ravine trail system offers residents kilometres of wooded walking paths.
+
+**3. Lawrence Park South** — Canopy 35%, green space 20%, 6 parks. Street trees here average 60+ years old, creating a cathedral-like canopy over residential streets. The neighbourhood resisted road widening in the 1970s, preserving its mature tree stock.
+
+**4. Forest Hill South** — Canopy 34%, green space 19%, 5 parks. Cedarvale Ravine and Nordheimer Ravine provide significant natural forest within city limits. The neighbourhood's restrictive zoning has prevented the lot severances that destroy canopy elsewhere.
+
+**5. Lambton Baby Point** — Canopy 33%, green space 21%, 6 parks. The Humber River valley gives this west-end neighbourhood an unusually high canopy for its density. James Gardens and Lambton Park add significant public green space.
+
+**6. Edenbridge–Humber Valley** — Canopy 32%, green space 20%, 7 parks. Another Humber River beneficiary. The valley's steep slopes have prevented development, preserving a mature forest corridor that elevates the entire neighbourhood's canopy count.
+
+**7. High Park–Swansea** — Canopy 31%, green space 26%, 8 parks. High Park itself (161 hectares) is Toronto's largest public park within a neighbourhood boundary. The oak savannah ecosystem is globally rare and irreplaceable.
+
+**8. Bedford Park–Nortown** — Canopy 31%, green space 18%, 5 parks. A mature midtown neighbourhood where decades of careful arboriculture have produced a dense residential canopy. Sherwood Park ravine adds natural green space.
+
+**9. St. Andrew–Windfields** — Canopy 30%, green space 19%, 6 parks. Wide lots and old-growth trees in North York. The Windfields estate heritage gives this area some of the largest specimen trees in the city.
+
+**10. Casa Loma** — Canopy 30%, green space 17%, 5 parks. Nordheimer Ravine and the Sir Winston Churchill Park provide natural canopy. The hilly terrain discourages development and preserves trees.
+
+## The So What
+
+Green canopy isn't just aesthetic — it directly impacts property values, energy costs, and health outcomes. Research from the David Suzuki Foundation found that a 10% increase in neighbourhood tree canopy correlates with a 1.1% increase in property values. Trees also reduce summer cooling costs by 15-30% and lower neighbourhood temperatures by 2-4°C during heat waves.
+
+The pattern: Toronto's greenest neighbourhoods are either ravine-adjacent (Rosedale, Lambton) or have large-lot zoning that preserves mature trees (Bridle Path, Lawrence Park). As the city densifies, the tension between housing supply and canopy preservation will intensify. The neighbourhoods that protect their trees today will see that green premium grow.
+`,
+  },
+  {
+    slug: "best-childcare-neighbourhoods-toronto-2026",
+    title: "The 10 Best Neighbourhoods for Childcare in Toronto: Spots, Waitlists & Readiness",
+    date: "2026-03-20",
+    excerpt: "We scored every neighbourhood on licensed daycare centres, capacity per child, estimated wait times, and school readiness. Here's where families have the easiest time finding care.",
+    image: "/blog-childcare.svg",
+    imageAlt: "Toronto childcare map",
+    readTime: "6 min read",
+    body: `
+Finding childcare in Toronto is a competitive sport. The average waitlist is 12-18 months for infant care and 6-12 months for toddlers. But the availability varies wildly by neighbourhood — some areas have surplus capacity while others have families waiting years. We built a childcare readiness score combining licensed centres (25%), capacity relative to the 0-4 population (50%), and EDI school readiness (25%).
+
+## The 10 Best for Childcare
+
+**1. Waterfront Communities–The Island** — 6 centres, 320 spaces, est. 4-month wait, EDI 72%. The downtown waterfront has the highest daycare density in the city, driven by the massive condo development boom that included childcare facilities in several buildings. The CityPlace community centre adds publicly funded spots.
+
+**2. Niagara (Liberty Village)** — 5 centres, 265 spaces, est. 6-month wait, EDI 74%. Liberty Village's family population has grown 40% since 2016, and childcare has kept pace. Two new centres opened in 2024-2025 in mixed-use developments along King Street.
+
+**3. Willowdale East** — 5 centres, 240 spaces, est. 7-month wait, EDI 78%. North York's transit hub has strong childcare infrastructure serving a dense, young-family population. Proximity to Finch subway means parents can combine commute and drop-off.
+
+**4. Woodbine Corridor** — 4 centres, 280 spaces, est. 5-month wait, EDI 74%. Fewer centres than the top 3 but higher total capacity per centre, meaning larger facilities with more flexibility. The Stan Wadlow Community Centre's daycare program is particularly well-regarded.
+
+**5. Mount Olive–Silverstone–Jamestown** — 5 centres, 250 spaces, est. 8-month wait, EDI 68%. Strong publicly funded childcare infrastructure in this northwest neighbourhood. Multiple centres participate in the City's fee subsidy program, making care accessible across income levels.
+
+**6. Islington–City Centre West** — 5 centres, 260 spaces, est. 7-month wait, EDI 72%. Excellent capacity near the Kipling transit hub. Several centres are co-located with schools, offering before-and-after programs that simplify the transition to kindergarten.
+
+**7. Don Valley Village** — 4 centres, 220 spaces, est. 8-month wait, EDI 76%. Good capacity relative to the family population, with centres distributed along the Sheppard corridor for commuter convenience.
+
+**8. Mimico** — 4 centres, 210 spaces, est. 7-month wait, EDI 75%. The lakeshore neighbourhood's family growth has driven childcare expansion. The Mimico Community Centre runs a well-subscribed program.
+
+**9. Agincourt North** — 4 centres, 200 spaces, est. 9-month wait, EDI 77%. Strong EDI scores reflect well-prepared children entering school. Multilingual programming available at several centres.
+
+**10. Milliken** — 4 centres, 215 spaces, est. 8-month wait, EDI 79%. The highest EDI score on this list at 79%, meaning children in Milliken enter kindergarten better prepared than almost anywhere in the city.
+
+## The So What
+
+Three insights for family buyers. First, downtown neighbourhoods (Waterfront, Niagara) have surprisingly better childcare access than many suburban areas — the condo boom brought childcare infrastructure with it. Second, EDI scores (school readiness) don't correlate perfectly with daycare availability — Milliken ranks 10th for spots but 1st for readiness, suggesting quality matters as much as quantity. Third, the $10-a-day federal childcare program is reducing wait times across the board, but the impact is uneven — neighbourhoods with existing infrastructure are benefiting most.
+`,
+  },
+  {
+    slug: "safest-neighbourhoods-pedestrians-cyclists-toronto-2026",
+    title: "The 10 Safest Neighbourhoods for Pedestrians and Cyclists in Toronto",
+    date: "2026-03-20",
+    excerpt: "We ranked all 158 neighbourhoods by traffic KSI (killed or seriously injured) collisions, with estimated pedestrian and cyclist involvement. These 10 are the safest to walk and bike.",
+    image: "/blog-pedestrian.svg",
+    imageAlt: "Toronto pedestrian safety map",
+    readTime: "6 min read",
+    body: `
+Toronto's Vision Zero plan aims to eliminate traffic fatalities by 2030. In 2024, 40 people were killed and over 200 seriously injured on Toronto roads. Pedestrians and cyclists account for roughly 65% of traffic fatalities despite making up a fraction of road users. We ranked all 158 neighbourhoods by total KSI (killed or seriously injured) collisions, with estimated pedestrian and cyclist involvement rates.
+
+## The 10 Safest for Walking and Cycling
+
+**1. Bridle Path–Sunnybrook–York Mills** — 8 KSI, est. 4 pedestrian, 2 cyclist. Low traffic volumes on residential streets. The trade-off: limited sidewalk connectivity and almost no cycling infrastructure. Safe because there's little traffic, not because of good design.
+
+**2. Rosedale–Moore Park** — 8 KSI, est. 3 pedestrian, 2 cyclist. The ravine trail system provides safe car-free routes for both pedestrians and cyclists. Residential streets have low speed limits and traffic calming.
+
+**3. Lawrence Park South** — 8 KSI, est. 4 pedestrian, 1 cyclist. Very low KSI despite proximity to Yonge Street. The residential grid is quiet with mature tree canopy providing natural traffic calming (narrow sightlines slow drivers).
+
+**4. Lambton Baby Point** — 8 KSI, est. 3 pedestrian, 2 cyclist. The Humber River trail provides a protected cycling corridor. Residential streets have cul-de-sacs and crescents that prevent cut-through traffic.
+
+**5. Bedford Park–Nortown** — 9 KSI, est. 4 pedestrian, 2 cyclist. Recent Vision Zero improvements along Avenue Road have reduced pedestrian conflicts. The Beltline Trail provides a car-free cycling route through the neighbourhood.
+
+**6. Broadview North** — 9 KSI, est. 4 pedestrian, 2 cyclist. Residential streets east of Broadview are quiet and well-maintained. The Danforth cycling infrastructure improvements have reduced cyclist KSI in the area.
+
+**7. Runnymede–Bloor West Village** — 9 KSI, est. 4 pedestrian, 2 cyclist. The Bloor Street bike lane (installed 2016) has reduced cyclist KSI by an estimated 45% on the corridor. Pedestrian safety benefits from the active BIA streetscape.
+
+**8. Forest Hill South** — 9 KSI, est. 4 pedestrian, 2 cyclist. Low traffic volumes and generous sidewalks. The neighbourhood's hilly terrain naturally slows traffic. Cedarvale Ravine trail provides off-road cycling.
+
+**9. Lawrence Park North** — 9 KSI, est. 4 pedestrian, 1 cyclist. Even lower cyclist KSI than its southern counterpart, reflecting fewer cycling commuters but also less cycling infrastructure. Safe for walking.
+
+**10. Playter Estates–Danforth** — 10 KSI, est. 5 pedestrian, 2 cyclist. The Danforth is a relatively safe commercial strip with good pedestrian infrastructure. The Bloor bike lane extension has improved cyclist safety heading west.
+
+## The So What
+
+The safest neighbourhoods for pedestrians share two traits: low traffic volumes (residential areas without major arterials) and physical design that limits speeds (crescents, cul-de-sacs, narrow streets, mature trees). For cyclists, protected infrastructure matters most — every neighbourhood on this list either has dedicated cycling infrastructure or access to the ravine trail system.
+
+The concerning pattern: the safest walking neighbourhoods are often the worst for cycling infrastructure. Bridle Path has the lowest KSI but no bike lanes. The neighbourhoods with the best cycling infrastructure (Bloor West, Danforth) have slightly higher overall KSI but much safer cycling specifically. If you're choosing a neighbourhood for active transportation, look for both low KSI and actual cycling infrastructure — not just one or the other.
+`,
+  }
+
 ];
 export default blogPosts;
