@@ -48,13 +48,13 @@ export default function Home() {
         <p style={{ fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", color: "#999", marginBottom: 12 }}>Sections</p>
         <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
           {[
-            { path: "/toronto/woodbine-corridor#development", title: "Development", desc: "Pipeline units, building permits, home values, and affordable housing." },
-            { path: "/toronto/woodbine-corridor#family", title: "Family & Living", desc: "Schools, daycares, groceries, recreation, walkability, and transit." },
-            { path: "/toronto/woodbine-corridor#safety", title: "Safety", desc: "Crime incidents, traffic KSI, shootings, hate crimes, and risk layers." },
-            { path: "/toronto/woodbine-corridor#health", title: "Health", desc: "Premature mortality, diabetes, family doctor access, food insecurity." },
-            { path: "/toronto/woodbine-corridor#demographics", title: "Demographics", desc: "Population, income, ownership, education, immigration, diversity." },
-            { path: "/toronto/woodbine-corridor#environment", title: "Nature", desc: "Parks, green space, tree canopy, green roofs, flood risk." },
-            { path: "/toronto/woodbine-corridor#business", title: "Business", desc: "Active businesses, net growth, restaurants, cafés, BIA status." },
+            { path: "/toronto/woodbine-corridor", title: "Development", desc: "Pipeline units, building permits, home values, and affordable housing." },
+            { path: "/toronto/woodbine-corridor", title: "Family & Living", desc: "Schools, daycares, groceries, recreation, walkability, and transit." },
+            { path: "/toronto/woodbine-corridor", title: "Safety", desc: "Crime incidents, traffic KSI, shootings, hate crimes, and risk layers." },
+            { path: "/toronto/woodbine-corridor", title: "Health", desc: "Premature mortality, diabetes, family doctor access, food insecurity." },
+            { path: "/toronto/woodbine-corridor", title: "Demographics", desc: "Population, income, ownership, education, immigration, diversity." },
+            { path: "/toronto/woodbine-corridor", title: "Nature", desc: "Parks, green space, tree canopy, green roofs, flood risk." },
+            { path: "/toronto/woodbine-corridor", title: "Business", desc: "Active businesses, net growth, restaurants, cafés, BIA status." },
           ].map(item => (
             <button key={item.path} onClick={() => router.push(item.path)}
               style={{ width: "100%", padding: "20px 28px", background: "#fff", border: "1px solid #e0e0e0", cursor: "pointer", textAlign: "left", display: "flex", justifyContent: "space-between", alignItems: "center", transition: "border-color 0.2s" }}
