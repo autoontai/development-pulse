@@ -1,103 +1,176 @@
 "use client";
 import React from "react";
-import { useParams } from "next/navigation";
-import neighbourhoods from "../../../data/neighbourhoods";
-import hoodData from "../../../data/hoodData";
-import WoodbineProfile from "../../../components/WoodbineProfile";
-import FullProfile from "../../../components/FullProfile";
+import { useRouter } from "next/navigation";
+import neighbourhoods from "../data/neighbourhoods";
+import blogPosts from "../data/blogPosts";
 
-function PlaceSchema({ hood, data }) {
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "Place",
-    "name": hood.name + ", Toronto, Ontario",
-    "description": `Neighbourhood profile for ${hood.name}: population ${hood.pop.toLocaleString()}, median home value $${(hood.hv/1000).toFixed(0)}K.`,
-    "address": {"@type": "PostalAddress", "addressLocality": "Toronto", "addressRegion": "Ontario", "addressCountry": "CA"},
-    "additionalProperty": [
-      {"@type": "PropertyValue", "name": "Population", "value": String(hood.pop)},
-      {"@type": "PropertyValue", "name": "Median Home Value", "value": "$" + (hood.hv/1000).toFixed(0) + "K"},
-      {"@type": "PropertyValue", "name": "Median Household Income", "value": "$" + (hood.income/1000).toFixed(0) + "K"},
-    ]
-  };
-  if (data) {
-    schema.additionalProperty.push(
-      {"@type": "PropertyValue", "name": "Walk Score", "value": String(data.ws)},
-      {"@type": "PropertyValue", "name": "Transit Score", "value": String(data.ts)},
-      {"@type": "PropertyValue", "name": "School Rating", "value": data.sch + "/10"},
-      {"@type": "PropertyValue", "name": "Crime Incidents", "value": String(data.crime)},
-    );
-  }
-  return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />;
-}
+const SF = "'Cormorant Garamond','Georgia',serif";
+const SN = "'DM Sans',-apple-system,sans-serif";
 
-function FAQSchema({ hood, data }) {
-  if (!data) return null;
-  const safe = data.crime < 176;
-  const goodSchools = data.sch >= 6.0;
-  const affordable = hood.hv < 900000;
-  const familyFriendly = data.play >= 4 && data.dc >= 3;
-  const momentum = data.mom > 105;
+export default function Home() {
+  const router = useRouter();
+  const featured = neighbourhoods.filter(n => [64, 63, 69, 62, 89, 86, 95, 77].includes(n.id));
+  const sorted = [...neighbourhoods].sort((a, b) => a.name.localeCompare(b.name));
 
-  const faqs = [
-    {
-      q: `Is ${hood.name} safe in 2026?`,
-      a: `${hood.name} has ${data.crime} reported crime incidents, which is ${safe ? "below" : "above"} the Toronto average of 176. The year-over-year trend is ${data.crimeC > 0 ? "up" : "down"} ${Math.abs(data.crimeC)}%. Traffic KSI (killed or seriously injured) collisions stand at ${data.ksi}, ${data.ksi < 12 ? "below" : "above"} the city average of 12. The neighbourhood has ${data.shoot} shooting incidents and ${data.hate} reported hate crimes. Overall, ${hood.name} is considered ${safe ? "safer than average" : "roughly average"} for Toronto.`
-    },
-    {
-      q: `What are schools like in ${hood.name}?`,
-      a: `Schools in ${hood.name} have an average Fraser Institute rating of ${data.sch}/10, which is ${goodSchools ? "above" : "below"} the Toronto average of 6.0/10. The neighbourhood has ${data.dc} licensed daycares with ${data.dcCap} total spaces, and a School Readiness (EDI) score of ${data.edi}% of children meeting developmental benchmarks (city average: 68%). There are ${data.play} playgrounds and ${data.splash} splash pads for younger children.`
-    },
-    {
-      q: `Is ${hood.name} good for families?`,
-      a: `${familyFriendly ? "Yes, " + hood.name + " is well-suited for families." : hood.name + " has some family amenities but may have gaps."} The neighbourhood has ${data.groc} grocery stores, ${data.dc} daycares (${data.dcCap} spaces), ${data.play} playgrounds, ${data.pool} pools, ${data.arena} arenas, and ${data.parks} parks. The walk score is ${data.ws} and transit score is ${data.ts}. Schools rate ${data.sch}/10 and average household size is ${data.hhSize}.`
-    },
-    {
-      q: `How much do homes cost in ${hood.name} in 2026?`,
-      a: `The median home value in ${hood.name} is $${(hood.hv/1000).toFixed(0)}K, ${hood.hv > 930000 ? "above" : "below"} the Toronto average of $930K. Home values grew ${data.hvC}% between the 2016 and 2021 census. The ownership rate is ${data.own}% (city average: 47%). Median household income is $${(hood.income/1000).toFixed(0)}K, giving a price-to-income ratio of ${(hood.hv/hood.income).toFixed(1)}x.`
-    },
-    {
-      q: `Is ${hood.name} a good investment in 2026?`,
-      a: `${hood.name} has a momentum score of ${data.mom}/200, which indicates ${momentum ? "above-average positive trajectory" : "average or steady trajectory"}. The development pipeline has ${data.pipe} units, with building permits ${data.permC > 0 ? "up" : "down"} ${Math.abs(data.permC)}% year-over-year. ${data.affPipe > 0 ? data.affPipe + " affordable housing units are in the pipeline." : ""} The neighbourhood is projected to add ${data.intens2051.toLocaleString()} dwelling units by 2051. Net business growth is ${data.bg > 0 ? "+" : ""}${data.bg} in the past 12 months.`
-    },
-  ];
+  return (
+    <div style={{ background: "#faf9f6", minHeight: "100vh", fontFamily: SN }}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        "@context": "https://schema.org", "@type": "WebSite", "name": "Real Data IQ",
+        "url": "https://www.realdataiq.com",
+        "description": "Neighbourhood intelligence for all 158 Toronto neighbourhoods.",
+        "potentialAction": { "@type": "SearchAction", "target": "https://www.realdataiq.com/toronto/{search_term_string}", "query-input": "required name=search_term_string" }
+      }) }} />
 
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": faqs.map(f => ({
-      "@type": "Question",
-      "name": f.q,
-      "acceptedAnswer": {"@type": "Answer", "text": f.a}
-    }))
-  };
-
-  return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />;
-}
-
-export default function NeighbourhoodPage() {
-  const params = useParams();
-  const slug = params.slug;
-  const hood = neighbourhoods.find(n => n.slug === slug);
-
-  if (!hood) {
-    return (
-      <div style={{ padding: 80, textAlign: "center", fontFamily: "'DM Sans', sans-serif" }}>
-        <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 36, fontWeight: 300, color: "#1a1a1a" }}>Neighbourhood not found</h1>
-        <p style={{ color: "#999", marginTop: 12 }}>No neighbourhood matches &ldquo;{slug}&rdquo;</p>
-        <a href="/" style={{ color: "#1a1a1a", marginTop: 24, display: "inline-block" }}>&larr; Back to all neighbourhoods</a>
+      {/* HERO */}
+      <div style={{ maxWidth: 800, margin: "0 auto", padding: "72px 32px 40px" }}>
+        <h2 style={{ fontFamily: SF, fontSize: 52, fontWeight: 300, color: "#1a1a1a", lineHeight: 1.1, margin: "0 0 16px" }}>Know your neighbourhood<br />before you buy.</h2>
+        <div style={{ width: 64, height: 1, background: "#1a1a1a", margin: "24px 0" }} />
+        <p style={{ fontFamily: SF, fontSize: 20, color: "#666", lineHeight: 1.6, maxWidth: 600 }}>Crime stats, school ratings, development pipeline, transit scores, property tax estimates, and 20+ data layers for every Toronto neighbourhood — compared to citywide averages.</p>
       </div>
-    );
-  }
 
-  const data = hoodData.find(d => d.id === hood.id);
+      {/* ALL LINKS - matches sidebar */}
+      <div style={{ maxWidth: 800, margin: "0 auto", padding: "0 32px 48px" }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+          {[
+            { path: "/find-neighbourhood", title: "Find Your Neighbourhood", desc: "Enter any Toronto address to see which neighbourhood it falls in." },
+            { path: "/compare", title: "Compare Neighbourhoods", desc: "Side-by-side comparison of every metric across 2–3 neighbourhoods." },
+          ].map(item => (
+            <button key={item.path} onClick={() => router.push(item.path)}
+              style={{ width: "100%", padding: "20px 28px", background: "#fff", border: "1px solid #e0e0e0", cursor: "pointer", textAlign: "left", display: "flex", justifyContent: "space-between", alignItems: "center", transition: "border-color 0.2s" }}
+              onMouseEnter={e => e.currentTarget.style.borderColor = "#1a1a1a"} onMouseLeave={e => e.currentTarget.style.borderColor = "#e0e0e0"}>
+              <div><p style={{ fontFamily: SF, fontSize: 18, fontWeight: 400, color: "#1a1a1a", margin: "0 0 4px" }}>{item.title}</p><p style={{ fontSize: 13, color: "#999", margin: 0 }}>{item.desc}</p></div>
+              <span style={{ fontSize: 22, color: "#999", flexShrink: 0, marginLeft: 16 }}>&rarr;</span>
+            </button>
+          ))}
+        </div>
 
-  if (hood.id === 64) {
-    return (<><PlaceSchema hood={hood} data={data} /><FAQSchema hood={hood} data={data} /><WoodbineProfile /></>);
-  }
+        <div style={{ borderTop: "1px solid #e0e0e0", margin: "20px 0" }} />
+        <p style={{ fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", color: "#999", marginBottom: 12 }}>Sections</p>
+        <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+          {[
+            { path: "/toronto/woodbine-corridor#development", title: "Development", desc: "Pipeline units, building permits, home values, and affordable housing." },
+            { path: "/toronto/woodbine-corridor#family", title: "Family & Living", desc: "Schools, daycares, groceries, recreation, walkability, and transit." },
+            { path: "/toronto/woodbine-corridor#safety", title: "Safety", desc: "Crime incidents, traffic KSI, shootings, hate crimes, and risk layers." },
+            { path: "/toronto/woodbine-corridor#health", title: "Health", desc: "Premature mortality, diabetes, family doctor access, food insecurity." },
+            { path: "/toronto/woodbine-corridor#demographics", title: "Demographics", desc: "Population, income, ownership, education, immigration, diversity." },
+            { path: "/toronto/woodbine-corridor#environment", title: "Nature", desc: "Parks, green space, tree canopy, green roofs, flood risk." },
+            { path: "/toronto/woodbine-corridor#business", title: "Business", desc: "Active businesses, net growth, restaurants, cafés, BIA status." },
+          ].map(item => (
+            <button key={item.path} onClick={() => router.push(item.path)}
+              style={{ width: "100%", padding: "20px 28px", background: "#fff", border: "1px solid #e0e0e0", cursor: "pointer", textAlign: "left", display: "flex", justifyContent: "space-between", alignItems: "center", transition: "border-color 0.2s" }}
+              onMouseEnter={e => e.currentTarget.style.borderColor = "#1a1a1a"} onMouseLeave={e => e.currentTarget.style.borderColor = "#e0e0e0"}>
+              <div><p style={{ fontFamily: SF, fontSize: 18, fontWeight: 400, color: "#1a1a1a", margin: "0 0 4px" }}>{item.title}</p><p style={{ fontSize: 13, color: "#999", margin: 0 }}>{item.desc}</p></div>
+              <span style={{ fontSize: 22, color: "#999", flexShrink: 0, marginLeft: 16 }}>&rarr;</span>
+            </button>
+          ))}
+        </div>
 
-  if (!data) {
-    return (<div style={{ padding: 80, textAlign: "center" }}><p>Loading...</p></div>);
-  }
+        <div style={{ borderTop: "1px solid #e0e0e0", margin: "20px 0" }} />
+        <p style={{ fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", color: "#999", marginBottom: 12 }}>Blog</p>
+        <button onClick={() => router.push("/blog")}
+          style={{ width: "100%", padding: "20px 28px", background: "#fff", border: "1px solid #e0e0e0", cursor: "pointer", textAlign: "left", display: "flex", justifyContent: "space-between", alignItems: "center", transition: "border-color 0.2s" }}
+          onMouseEnter={e => e.currentTarget.style.borderColor = "#1a1a1a"} onMouseLeave={e => e.currentTarget.style.borderColor = "#e0e0e0"}>
+          <div><p style={{ fontFamily: SF, fontSize: 18, fontWeight: 400, color: "#1a1a1a", margin: "0 0 4px" }}>Neighbourhood Intelligence Blog</p><p style={{ fontSize: 13, color: "#999", margin: 0 }}>Data-driven rankings, hidden gems, and investment signals.</p></div>
+          <span style={{ fontSize: 22, color: "#999", flexShrink: 0, marginLeft: 16 }}>&rarr;</span>
+        </button>
 
-  return (<><PlaceSchema hood={hood} data={data} /><FAQSchema hood={hood} data={data} /><FullProfile d={data} /></>);
+        <div style={{ borderTop: "1px solid #e0e0e0", margin: "20px 0" }} />
+        <p style={{ fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", color: "#999", marginBottom: 12 }}>Tools</p>
+        <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+          {[
+            { path: "/tools/tree-canopy", title: "Tree Canopy Coverage Map", desc: "Explore the greenest neighbourhoods in Toronto." },
+            { path: "/tools/childcare", title: "Childcare Readiness Map", desc: "Find neighbourhoods with the most daycare spots and shortest waits." },
+            { path: "/tools/pedestrian-safety", title: "Pedestrian & Cyclist Safety Map", desc: "See which areas have the lowest traffic collision rates." },
+          ].map(item => (
+            <button key={item.path} onClick={() => router.push(item.path)}
+              style={{ width: "100%", padding: "20px 28px", background: "#fff", border: "1px solid #e0e0e0", cursor: "pointer", textAlign: "left", display: "flex", justifyContent: "space-between", alignItems: "center", transition: "border-color 0.2s" }}
+              onMouseEnter={e => e.currentTarget.style.borderColor = "#1a1a1a"} onMouseLeave={e => e.currentTarget.style.borderColor = "#e0e0e0"}>
+              <div><p style={{ fontFamily: SF, fontSize: 18, fontWeight: 400, color: "#1a1a1a", margin: "0 0 4px" }}>{item.title}</p><p style={{ fontSize: 13, color: "#999", margin: 0 }}>{item.desc}</p></div>
+              <span style={{ fontSize: 22, color: "#999", flexShrink: 0, marginLeft: 16 }}>&rarr;</span>
+            </button>
+          ))}
+        </div>
+
+        <div style={{ borderTop: "1px solid #e0e0e0", margin: "20px 0" }} />
+        <p style={{ fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", color: "#999", marginBottom: 12 }}>Calculators</p>
+        <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+          {[
+            { path: "/toronto/woodbine-corridor", title: "Homebuyer Calculator", desc: "Mortgage, property tax, closing costs, and affordability for any neighbourhood." },
+            { path: "/toronto/woodbine-corridor", title: "What Can I Afford?", desc: "Enter your income to see which neighbourhoods are within reach." },
+            { path: "/toronto/woodbine-corridor", title: "Rent vs Buy", desc: "Compare cumulative costs of renting vs buying over time." },
+          ].map((item, i) => (
+            <button key={i} onClick={() => router.push(item.path)}
+              style={{ width: "100%", padding: "20px 28px", background: "#fff", border: "1px solid #e0e0e0", cursor: "pointer", textAlign: "left", display: "flex", justifyContent: "space-between", alignItems: "center", transition: "border-color 0.2s" }}
+              onMouseEnter={e => e.currentTarget.style.borderColor = "#1a1a1a"} onMouseLeave={e => e.currentTarget.style.borderColor = "#e0e0e0"}>
+              <div><p style={{ fontFamily: SF, fontSize: 18, fontWeight: 400, color: "#1a1a1a", margin: "0 0 4px" }}>{item.title}</p><p style={{ fontSize: 13, color: "#999", margin: 0 }}>{item.desc}</p></div>
+              <span style={{ fontSize: 22, color: "#999", flexShrink: 0, marginLeft: 16 }}>&rarr;</span>
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* FEATURED */}
+      <div style={{ maxWidth: 800, margin: "0 auto", padding: "0 32px 48px" }}>
+        <p style={{ fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", color: "#999", marginBottom: 16 }}>Featured Neighbourhoods</p>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(180px, 1fr))", gap: 12 }}>
+          {featured.map(n => (
+            <button key={n.id} onClick={() => router.push("/toronto/" + n.slug)}
+              style={{ background: "#fff", border: "1px solid #e0e0e0", padding: "16px", textAlign: "left", cursor: "pointer", transition: "border-color 0.2s" }}
+              onMouseEnter={e => e.currentTarget.style.borderColor = "#1a1a1a"}
+              onMouseLeave={e => e.currentTarget.style.borderColor = "#e0e0e0"}>
+              <p style={{ fontFamily: SF, fontSize: 16, color: "#1a1a1a", margin: "0 0 4px", fontWeight: 400 }}>{n.name}</p>
+              <p style={{ fontSize: 11, color: "#999", margin: 0 }}>#{n.id} · ${(n.hv / 1000).toFixed(0)}K median</p>
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* ALL NEIGHBOURHOODS */}
+      <div style={{ maxWidth: 800, margin: "0 auto", padding: "0 32px 80px" }}>
+        <p style={{ fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", color: "#999", margin: "0 0 16px" }}>All 158 Neighbourhoods</p>
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 1, background: "#e0e0e0", border: "1px solid #e0e0e0" }}>
+          {sorted.map(n => (
+            <button key={n.id} onClick={() => router.push("/toronto/" + n.slug)}
+              style={{ background: "#fff", border: "none", padding: "14px 16px", textAlign: "left", cursor: "pointer", display: "flex", justifyContent: "space-between", alignItems: "center", transition: "background 0.15s" }}
+              onMouseEnter={e => e.currentTarget.style.background = "#f5f5f0"}
+              onMouseLeave={e => e.currentTarget.style.background = "#fff"}>
+              <div>
+                <p style={{ fontSize: 14, color: "#1a1a1a", margin: 0, fontWeight: 500 }}>{n.name}</p>
+                <p style={{ fontSize: 11, color: "#999", margin: "2px 0 0" }}>#{n.id} · Pop. {n.pop.toLocaleString()}</p>
+              </div>
+              <div style={{ textAlign: "right" }}>
+                <p style={{ fontFamily: SF, fontSize: 16, color: "#1a1a1a", margin: 0 }}>${(n.hv / 1000).toFixed(0)}K</p>
+                <p style={{ fontSize: 10, color: "#999", margin: "1px 0 0" }}>${(n.income / 1000).toFixed(0)}K income</p>
+              </div>
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <div style={{ maxWidth: 800, margin: "0 auto", padding: "0 32px 48px" }}>
+        <p style={{ fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", color: "#999", marginBottom: 16 }}>Latest from the Blog</p>
+        <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+          {blogPosts.slice(0, 3).map(post => (
+            <button key={post.slug} onClick={() => router.push("/blog/" + post.slug)}
+              style={{ background: "#fff", border: "1px solid #e0e0e0", padding: "20px 24px", textAlign: "left", cursor: "pointer", display: "flex", justifyContent: "space-between", alignItems: "center", transition: "border-color 0.2s" }}
+              onMouseEnter={e => e.currentTarget.style.borderColor = "#1a1a1a"}
+              onMouseLeave={e => e.currentTarget.style.borderColor = "#e0e0e0"}>
+              <div style={{ flex: 1 }}>
+                <p style={{ fontFamily: SF, fontSize: 18, fontWeight: 400, color: "#1a1a1a", margin: "0 0 4px" }}>{post.title}</p>
+                <p style={{ fontSize: 12, color: "#999", margin: 0 }}>{post.readTime} · {new Date(post.date).toLocaleDateString("en-CA", { month: "short", day: "numeric" })}</p>
+              </div>
+              <span style={{ fontSize: 20, color: "#999", flexShrink: 0, marginLeft: 16 }}>&rarr;</span>
+            </button>
+          ))}
+        </div>
+        <button onClick={() => router.push("/blog")} style={{ marginTop: 12, background: "transparent", border: "none", cursor: "pointer", fontSize: 13, color: "#1a1a1a", textDecoration: "underline", padding: 0 }}>View all articles &rarr;</button>
+      </div>
+
+      <div style={{ maxWidth: 800, margin: "0 auto", padding: "0 32px 48px" }}>
+        <div style={{ borderTop: "1px solid #e0e0e0", paddingTop: 24 }}>
+          <p style={{ fontSize: 11, color: "#999", lineHeight: 1.8 }}>Sources: Toronto Open Data, Statistics Canada Census 2021, Toronto Police Service, Fraser Institute, RentSafeTO, DineSafe, Vision Zero, TRCA, MPAC.</p>
+        </div>
+      </div>
+    </div>
+  );
 }
