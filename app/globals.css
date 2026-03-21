@@ -1,0 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=DM+Sans:wght@400;500;600&display=swap');
+html, body { margin: 0; padding: 0; background: #faf9f6; }
+* { box-sizing: border-box; }
+a { text-decoration: none; color: inherit; }
