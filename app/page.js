@@ -66,23 +66,37 @@ export default function Home() {
         </button>
       </div>
 
-      {/* BLOG CTA */}
-      <div style={{ maxWidth: 800, margin: "0 auto", padding: "0 32px 12px" }}>
-        <button
-          onClick={() => router.push("/blog")}
-          style={{
-            width: "100%", padding: "24px 32px", background: "#fff", border: "1px solid #e0e0e0",
-            cursor: "pointer", textAlign: "left", display: "flex", justifyContent: "space-between", alignItems: "center",
-            transition: "border-color 0.2s",
-          }}
-          onMouseEnter={e => e.currentTarget.style.borderColor = "#1a1a1a"}
-          onMouseLeave={e => e.currentTarget.style.borderColor = "#e0e0e0"}
-        >
-          <div>
-            <p style={{ fontFamily: SF, fontSize: 20, fontWeight: 400, color: "#1a1a1a", margin: "0 0 4px" }}>Neighbourhood Intelligence Blog</p>
-            <p style={{ fontSize: 13, color: "#999", margin: 0 }}>Data-driven rankings, hidden gems, and investment signals.</p>
-          </div>
-          <span style={{ fontSize: 24, color: "#999", flexShrink: 0, marginLeft: 16 }}>&rarr;</span>
+      {/* ALL TOOLS & LINKS */}
+      <div style={{ maxWidth: 800, margin: "0 auto", padding: "0 32px 12px", display: "flex", flexDirection: "column", gap: 8 }}>
+        <button onClick={() => router.push("/tools/tree-canopy")}
+          style={{ width: "100%", padding: "20px 24px", background: "#fff", border: "1px solid #e0e0e0", cursor: "pointer", textAlign: "left", display: "flex", justifyContent: "space-between", alignItems: "center", transition: "border-color 0.2s" }}
+          onMouseEnter={e => e.currentTarget.style.borderColor = "#1a1a1a"} onMouseLeave={e => e.currentTarget.style.borderColor = "#e0e0e0"}>
+          <div><p style={{ fontFamily: SF, fontSize: 18, fontWeight: 400, color: "#1a1a1a", margin: "0 0 3px" }}>Tree Canopy Coverage Map</p><p style={{ fontSize: 12, color: "#999", margin: 0 }}>Explore the greenest neighbourhoods in Toronto.</p></div>
+          <span style={{ fontSize: 20, color: "#999", flexShrink: 0, marginLeft: 12 }}>&rarr;</span>
+        </button>
+        <button onClick={() => router.push("/tools/childcare")}
+          style={{ width: "100%", padding: "20px 24px", background: "#fff", border: "1px solid #e0e0e0", cursor: "pointer", textAlign: "left", display: "flex", justifyContent: "space-between", alignItems: "center", transition: "border-color 0.2s" }}
+          onMouseEnter={e => e.currentTarget.style.borderColor = "#1a1a1a"} onMouseLeave={e => e.currentTarget.style.borderColor = "#e0e0e0"}>
+          <div><p style={{ fontFamily: SF, fontSize: 18, fontWeight: 400, color: "#1a1a1a", margin: "0 0 3px" }}>Childcare Readiness Map</p><p style={{ fontSize: 12, color: "#999", margin: 0 }}>Find neighbourhoods with the most daycare spots and shortest waits.</p></div>
+          <span style={{ fontSize: 20, color: "#999", flexShrink: 0, marginLeft: 12 }}>&rarr;</span>
+        </button>
+        <button onClick={() => router.push("/tools/pedestrian-safety")}
+          style={{ width: "100%", padding: "20px 24px", background: "#fff", border: "1px solid #e0e0e0", cursor: "pointer", textAlign: "left", display: "flex", justifyContent: "space-between", alignItems: "center", transition: "border-color 0.2s" }}
+          onMouseEnter={e => e.currentTarget.style.borderColor = "#1a1a1a"} onMouseLeave={e => e.currentTarget.style.borderColor = "#e0e0e0"}>
+          <div><p style={{ fontFamily: SF, fontSize: 18, fontWeight: 400, color: "#1a1a1a", margin: "0 0 3px" }}>Pedestrian & Cyclist Safety Map</p><p style={{ fontSize: 12, color: "#999", margin: 0 }}>See which areas have the lowest traffic collision rates.</p></div>
+          <span style={{ fontSize: 20, color: "#999", flexShrink: 0, marginLeft: 12 }}>&rarr;</span>
+        </button>
+        <button onClick={() => router.push("/blog")}
+          style={{ width: "100%", padding: "20px 24px", background: "#fff", border: "1px solid #e0e0e0", cursor: "pointer", textAlign: "left", display: "flex", justifyContent: "space-between", alignItems: "center", transition: "border-color 0.2s" }}
+          onMouseEnter={e => e.currentTarget.style.borderColor = "#1a1a1a"} onMouseLeave={e => e.currentTarget.style.borderColor = "#e0e0e0"}>
+          <div><p style={{ fontFamily: SF, fontSize: 18, fontWeight: 400, color: "#1a1a1a", margin: "0 0 3px" }}>Neighbourhood Intelligence Blog</p><p style={{ fontSize: 12, color: "#999", margin: 0 }}>Data-driven rankings, hidden gems, and investment signals.</p></div>
+          <span style={{ fontSize: 20, color: "#999", flexShrink: 0, marginLeft: 12 }}>&rarr;</span>
+        </button>
+        <button onClick={() => router.push("/premium")}
+          style={{ width: "100%", padding: "20px 24px", background: "#fff", border: "1px solid #e0e0e0", cursor: "pointer", textAlign: "left", display: "flex", justifyContent: "space-between", alignItems: "center", transition: "border-color 0.2s" }}
+          onMouseEnter={e => e.currentTarget.style.borderColor = "#1a1a1a"} onMouseLeave={e => e.currentTarget.style.borderColor = "#e0e0e0"}>
+          <div><p style={{ fontFamily: SF, fontSize: 18, fontWeight: 400, color: "#1a1a1a", margin: "0 0 3px" }}>Premium Newsletter</p><p style={{ fontSize: 12, color: "#999", margin: 0 }}>Monthly deep-dive reports, early data access, and exclusive insights. $10/mo.</p></div>
+          <span style={{ fontSize: 20, color: "#999", flexShrink: 0, marginLeft: 12 }}>&rarr;</span>
         </button>
       </div>
 

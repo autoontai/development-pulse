@@ -103,20 +103,27 @@ export default function FullProfile({d}){
   return(
     <div style={{background:"#faf9f6",minHeight:"100vh",fontFamily:SN,display:"flex"}}>
       <nav style={{width:192,background:"#fff",borderRight:"1px solid #e0e0e0",flexShrink:0,paddingTop:24,position:"sticky",top:64,height:"calc(100vh - 64px)",overflowY:"auto"}}>
-        <p style={{fontSize:11,letterSpacing:"0.2em",textTransform:"uppercase",color:"#999",padding:"0 20px",marginBottom:12}}>Sections</p>
+        <p style={{fontSize:11,letterSpacing:"0.2em",textTransform:"uppercase",color:"#999",padding:"0 20px",marginBottom:16}}>Sections</p>
         {navs.map(n=>(
           <button key={n.id} onClick={()=>setTab(n.id)} style={{display:"block",width:"100%",textAlign:"left",padding:"10px 20px",border:"none",cursor:"pointer",fontSize:13,fontWeight:500,fontFamily:SN,background:tab===n.id?"#f9f9f9":"transparent",borderLeft:tab===n.id?"2px solid "+INK:"2px solid transparent",color:tab===n.id?INK:"#888"}}>{n.l}</button>
         ))}
-        <div style={{margin:"16px 20px",borderTop:"1px solid #e5e5e5"}}/>
-        <p style={{fontSize:11,letterSpacing:"0.2em",textTransform:"uppercase",color:"#999",padding:"0 20px",marginBottom:12}}>Tools</p>
-        <a href="/find-neighbourhood" style={{display:"block",padding:"10px 20px",fontSize:13,fontWeight:500,fontFamily:SN,color:"#888",textDecoration:"none",borderLeft:"2px solid transparent"}}>Find Neighbourhood</a>
-        <a href="/compare" style={{display:"block",padding:"10px 20px",fontSize:13,fontWeight:500,fontFamily:SN,color:"#888",textDecoration:"none",borderLeft:"2px solid transparent"}}>Compare Hoods</a>
-        <a href="/blog" style={{display:"block",padding:"10px 20px",fontSize:13,fontWeight:500,fontFamily:SN,color:"#888",textDecoration:"none",borderLeft:"2px solid transparent"}}>Blog</a>
-        <a href="/premium" style={{display:"block",padding:"10px 20px",fontSize:13,fontWeight:500,fontFamily:SN,color:"#888",textDecoration:"none",borderLeft:"2px solid transparent"}}>Premium Newsletter</a>
+        <div style={{margin:"12px 20px",borderTop:"1px solid #e0e0e0"}}/>
+        <p style={{fontSize:11,letterSpacing:"0.2em",textTransform:"uppercase",color:"#999",padding:"0 20px",marginBottom:8}}>Blog</p>
+        <a href="/blog" style={{display:"block",padding:"8px 20px",fontSize:13,fontWeight:500,fontFamily:SN,color:"#888",textDecoration:"none",borderLeft:"2px solid transparent"}}>Blog</a>
+        <div style={{margin:"12px 20px",borderTop:"1px solid #e0e0e0"}}/>
+        <p style={{fontSize:11,letterSpacing:"0.2em",textTransform:"uppercase",color:"#999",padding:"0 20px",marginBottom:8}}>Tools</p>
+        <a href="/find-neighbourhood" style={{display:"block",padding:"8px 20px",fontSize:13,fontWeight:500,fontFamily:SN,color:"#888",textDecoration:"none",borderLeft:"2px solid transparent"}}>Find Neighbourhood</a>
+        <a href="/compare" style={{display:"block",padding:"8px 20px",fontSize:13,fontWeight:500,fontFamily:SN,color:"#888",textDecoration:"none",borderLeft:"2px solid transparent"}}>Compare Hoods</a>
+        <a href="/tools/tree-canopy" style={{display:"block",padding:"8px 20px",fontSize:13,fontWeight:500,fontFamily:SN,color:"#888",textDecoration:"none",borderLeft:"2px solid transparent"}}>Tree Canopy Map</a>
+        <a href="/tools/childcare" style={{display:"block",padding:"8px 20px",fontSize:13,fontWeight:500,fontFamily:SN,color:"#888",textDecoration:"none",borderLeft:"2px solid transparent"}}>Childcare Map</a>
+        <a href="/tools/pedestrian-safety" style={{display:"block",padding:"8px 20px",fontSize:13,fontWeight:500,fontFamily:SN,color:"#888",textDecoration:"none",borderLeft:"2px solid transparent"}}>Pedestrian Safety Map</a>
         {tools.map(n=>(
-          <button key={n.id} onClick={()=>setTab(n.id)} style={{display:"block",width:"100%",textAlign:"left",padding:"10px 20px",border:"none",cursor:"pointer",fontSize:13,fontWeight:500,fontFamily:SN,background:tab===n.id?"#f9f9f9":"transparent",borderLeft:tab===n.id?"2px solid "+INK:"2px solid transparent",color:tab===n.id?INK:"#888"}}>{n.l}</button>
+          <button key={n.id} onClick={()=>setTab(n.id)} style={{display:"block",width:"100%",textAlign:"left",padding:"8px 20px",border:"none",cursor:"pointer",fontSize:13,fontWeight:500,fontFamily:SN,background:tab===n.id?"#f9f9f9":"transparent",borderLeft:tab===n.id?"2px solid "+INK:"2px solid transparent",color:tab===n.id?INK:"#888"}}>{n.l}</button>
         ))}
-        <ScorecardCapture neighbourhood={d.n} />
+        <div style={{margin:"12px 20px",borderTop:"1px solid #e0e0e0"}}/>
+        <p style={{fontSize:11,letterSpacing:"0.2em",textTransform:"uppercase",color:"#999",padding:"0 20px",marginBottom:8}}>Subscribe</p>
+        <a href="/premium" style={{display:"block",padding:"8px 20px",fontSize:13,fontWeight:500,fontFamily:SN,color:"#888",textDecoration:"none",borderLeft:"2px solid transparent"}}>Premium Newsletter</a>
+        <ScorecardCapture variant="sidebar" neighbourhood={d.n} />
       </nav>
       <main style={{flex:1,padding:"48px 40px",maxWidth:768,margin:"0 auto"}}>
 

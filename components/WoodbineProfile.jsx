@@ -321,27 +321,28 @@ export default function WoodbineProfile() {
       
 
       <div className="flex flex-1 overflow-hidden">
-        <nav className="w-48 bg-white border-r border-gray-200 flex-shrink-0 overflow-y-auto hidden md:flex flex-col pt-6" style={{position:"sticky",top:64,height:"calc(100vh - 64px)"}}>
-          <p className="text-xs tracking-[0.2em] uppercase text-gray-400 px-5 mb-3">Sections</p>
-          {navs.map(n=>(
-            <button key={n.id} onClick={()=>setTab(n.id)}
-              className={`w-full text-left px-5 py-2.5 text-sm font-medium transition-colors ${tab===n.id?"text-gray-900 bg-gray-50 border-l-2 border-gray-900":"text-gray-500 hover:text-gray-700 border-l-2 border-transparent"}`}>
-              {n.label}
-            </button>
-          ))}
-          <div className="mx-5 my-4 border-t border-gray-200"/>
-          <p className="text-xs tracking-[0.2em] uppercase text-gray-400 px-5 mb-3">Tools</p>
-          <a href="/find-neighbourhood" className="block w-full text-left px-5 py-2.5 text-sm font-medium text-gray-500 hover:text-gray-700 border-l-2 border-transparent no-underline" style={{fontFamily:SANS}}>Find Neighbourhood</a>
-          <a href="/compare" className="block w-full text-left px-5 py-2.5 text-sm font-medium text-gray-500 hover:text-gray-700 border-l-2 border-transparent no-underline" style={{fontFamily:SANS}}>Compare Hoods</a>
-          <a href="/blog" className="block w-full text-left px-5 py-2.5 text-sm font-medium text-gray-500 hover:text-gray-700 border-l-2 border-transparent no-underline" style={{fontFamily:SANS}}>Blog</a>
-          <a href="/premium" className="block w-full text-left px-5 py-2.5 text-sm font-medium text-gray-500 hover:text-gray-700 border-l-2 border-transparent no-underline" style={{fontFamily:SANS}}>Premium Newsletter</a>
-          {toolNavs.map(n=>(
-            <button key={n.id} onClick={()=>setTab(n.id)}
-              className={`w-full text-left px-5 py-2.5 text-sm font-medium transition-colors ${tab===n.id?"text-gray-900 bg-gray-50 border-l-2 border-gray-900":"text-gray-500 hover:text-gray-700 border-l-2 border-transparent"}`}>
-              {n.label}
-            </button>
-          ))}
-          <ScorecardCapture neighbourhood="Woodbine Corridor" />
+        <nav className="w-48 bg-white border-r border-gray-200 flex-shrink-0 pt-6 sticky overflow-y-auto" style={{top:64,height:"calc(100vh - 64px)"}}>
+        <p className="text-xs tracking-[0.2em] uppercase text-gray-400 px-5 mb-4">Sections</p>
+        {sectionNavs.map(n=>(
+          <button key={n.id} onClick={()=>setTab(n.id)} className={"block w-full text-left px-5 py-2.5 text-sm font-medium border-l-2 cursor-pointer "+(tab===n.id?"bg-gray-50 border-gray-900 text-gray-900":"border-transparent text-gray-500 hover:text-gray-700")} style={{fontFamily:SANS}}>{n.label}</button>
+        ))}
+        <div className="mt-3 mb-2 px-5"><div className="border-t border-gray-200"/></div>
+        <p className="text-xs tracking-[0.2em] uppercase text-gray-400 px-5 mb-2">Blog</p>
+        <a href="/blog" className="block px-5 py-2 text-sm font-medium text-gray-500 hover:text-gray-700 border-l-2 border-transparent no-underline" style={{fontFamily:SANS}}>Blog</a>
+        <div className="mt-3 mb-2 px-5"><div className="border-t border-gray-200"/></div>
+        <p className="text-xs tracking-[0.2em] uppercase text-gray-400 px-5 mb-2">Tools</p>
+        <a href="/find-neighbourhood" className="block px-5 py-2 text-sm font-medium text-gray-500 hover:text-gray-700 border-l-2 border-transparent no-underline" style={{fontFamily:SANS}}>Find Neighbourhood</a>
+        <a href="/compare" className="block px-5 py-2 text-sm font-medium text-gray-500 hover:text-gray-700 border-l-2 border-transparent no-underline" style={{fontFamily:SANS}}>Compare Hoods</a>
+        <a href="/tools/tree-canopy" className="block px-5 py-2 text-sm font-medium text-gray-500 hover:text-gray-700 border-l-2 border-transparent no-underline" style={{fontFamily:SANS}}>Tree Canopy Map</a>
+        <a href="/tools/childcare" className="block px-5 py-2 text-sm font-medium text-gray-500 hover:text-gray-700 border-l-2 border-transparent no-underline" style={{fontFamily:SANS}}>Childcare Map</a>
+        <a href="/tools/pedestrian-safety" className="block px-5 py-2 text-sm font-medium text-gray-500 hover:text-gray-700 border-l-2 border-transparent no-underline" style={{fontFamily:SANS}}>Pedestrian Safety Map</a>
+        {toolNavs.map(n=>(
+          <button key={n.id} onClick={()=>setTab(n.id)} className={"block w-full text-left px-5 py-2 text-sm font-medium border-l-2 cursor-pointer "+(tab===n.id?"bg-gray-50 border-gray-900 text-gray-900":"border-transparent text-gray-500 hover:text-gray-700")} style={{fontFamily:SANS}}>{n.label}</button>
+        ))}
+        <div className="mt-3 mb-2 px-5"><div className="border-t border-gray-200"/></div>
+        <p className="text-xs tracking-[0.2em] uppercase text-gray-400 px-5 mb-2">Subscribe</p>
+        <a href="/premium" className="block px-5 py-2 text-sm font-medium text-gray-500 hover:text-gray-700 border-l-2 border-transparent no-underline" style={{fontFamily:SANS}}>Premium Newsletter</a>
+        <ScorecardCapture variant="sidebar" neighbourhood="Woodbine Corridor" />
       </nav>
 
         <main className="flex-1 overflow-y-auto">
